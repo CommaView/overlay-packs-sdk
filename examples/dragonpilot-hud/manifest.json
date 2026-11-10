@@ -1,0 +1,16 @@
+{
+  "sdk": 1,
+  "id": "dragonpilot-hud",
+  "name": "dragonpilot HUD: rainbow path, lead and radar stats, torque",
+  "version": "0.2.2",
+  "author": "CommaView",
+  "forks": ["dragonpilot"],
+  "description": "dragonpilot's own comma 3X onroad additions that CommaView doesn't export: its rainbow path, the lead's speed, distance and time to reach it, the radar's tracking points, the blinker and blind spot borders, and the torque bar. dragonpilot (dragonpilot/dragonpilot) only; its ALKA status is the runtime's own.",
+  "license": "MIT",
+  "runtime": {
+    "entry": "export.py",
+    "services": ["liveTracks", "controlsState", "carOutput"],
+    "requiresModules": ["dragonpilot.selfdrive.ui.dashy_qr"]
+  },
+  "overlay": "overlay.json"
+}

@@ -1,0 +1,10 @@
+{
+  "sdk": 1,
+  "id": "datetime",
+  "name": "Date and time stamp",
+  "version": "0.1.0",
+  "author": "CommaView (example pack)",
+  "description": "A dashcam-style date and time stamp in the road view's bottom-left corner, on any comma and any fork. Drawn by the app alone (standalone): nothing is installed on the comma. Replays and exports stamp the time the drive happened.",
+  "license": "MIT",
+  "overlay": "overlay.json"
+}

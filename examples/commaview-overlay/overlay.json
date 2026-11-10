@@ -1,0 +1,1466 @@
+{
+ "format": 1,
+ "id": "commaview-overlay",
+ "standalone": true,
+ "design": {
+  "name": "CommaView, as a pack"
+ },
+ "images": {
+  "car": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABK0lEQVR42u3ZSw3EIBAG4EqohJWABCQgBQk4QAJSKqESkIAEliYcGtLXDkOXpj/JXPbAzNcN0ClDjHF4cgwAAAAAAI8EiBSSOcQdgE+KObYbc87RDNCy+DWiCUAViUIKm8JUhs1zrYdqATBFEsG4GEUxt7kDwL2jAAAAAABsx3LMuxT+RoDPOWUtwB2cmJqxeH2Qx1EB5sKxvzypqTL8hTyGAgixnxF+BcjY35CvBbidvsAzFud3+gDHAdjbyiwjwFLrqAEYRoD5B+Ax/8C00YAr5m025DnLPBN2IQAAoAFEhwDx68uc76h4T3kbVR0BFLWh0R0Ur2s6srPF7Bg+LTrK4uUCnPasF3tuAADoFXB0qbH8PjIAxpMcLF/mtu60uD9skXLgmhWAtwO+pncArUTJUEkAAAAASUVORK5CYII="
+ },
+ "layers": [
+  {
+   "type": "ribbon",
+   "along": "laneLine",
+   "index": 0,
+   "from": "-0.12 * lane.0.prob",
+   "to": "0.12 * lane.0.prob",
+   "color": "#E6F4F2D1",
+   "opacity": "clamp(lane.0.prob, 0, 1)",
+   "fade": 0.3
+  },
+  {
+   "type": "ribbon",
+   "along": "laneLine",
+   "index": 1,
+   "from": "-0.12 * lane.1.prob",
+   "to": "0.12 * lane.1.prob",
+   "color": "#E6F4F2D1",
+   "opacity": "clamp(lane.1.prob, 0, 1)",
+   "fade": 0.3
+  },
+  {
+   "type": "ribbon",
+   "along": "laneLine",
+   "index": 2,
+   "from": "-0.12 * lane.2.prob",
+   "to": "0.12 * lane.2.prob",
+   "color": "#E6F4F2D1",
+   "opacity": "clamp(lane.2.prob, 0, 1)",
+   "fade": 0.3
+  },
+  {
+   "type": "ribbon",
+   "along": "laneLine",
+   "index": 3,
+   "from": "-0.12 * lane.3.prob",
+   "to": "0.12 * lane.3.prob",
+   "color": "#E6F4F2D1",
+   "opacity": "clamp(lane.3.prob, 0, 1)",
+   "fade": 0.3
+  },
+  {
+   "type": "ribbon",
+   "along": "roadEdge",
+   "index": 0,
+   "from": -0.06,
+   "to": 0.06,
+   "color": "#FF7A6BCC",
+   "dash": [
+    1.5,
+    1.5
+   ],
+   "opacity": "clamp(1 - edge.0.std, 0, 1)",
+   "fade": 0.3
+  },
+  {
+   "type": "ribbon",
+   "along": "roadEdge",
+   "index": 1,
+   "from": -0.06,
+   "to": 0.06,
+   "color": "#FF7A6BCC",
+   "dash": [
+    1.5,
+    1.5
+   ],
+   "opacity": "clamp(1 - edge.1.std, 0, 1)",
+   "fade": 0.3
+  },
+  {
+   "type": "ribbon",
+   "when": "status != 'unknown'",
+   "along": "path",
+   "from": -0.9,
+   "to": 0.9,
+   "end": "lead.present ? lead.distance - 1.5 : 250",
+   "gradient": [
+    [
+     0,
+     "=pick(status, 'engaged', '#29BFAF75', 'long_only', '#29BFAF75', 'lat_only', '#98A4B32E', 'override', '#F2A93B4D', '#98A4B329')"
+    ],
+    [
+     1,
+     "=pick(status, 'engaged', '#29BFAF40', 'long_only', '#29BFAF40', 'lat_only', '#98A4B31A', 'override', '#F2A93B29', '#98A4B314')"
+    ]
+   ],
+   "fade": 0.38
+  },
+  {
+   "type": "ribbon",
+   "along": "path",
+   "from": -0.94,
+   "to": -0.86,
+   "end": "lead.present ? lead.distance - 1.5 : 250",
+   "fade": 0.38,
+   "when": "engaged || status == 'override'",
+   "color": "=status == 'override' ? '#F2A93BF2' : '#5FE0D2F2'"
+  },
+  {
+   "type": "ribbon",
+   "along": "path",
+   "from": -0.94,
+   "to": -0.86,
+   "end": "lead.present ? lead.distance - 1.5 : 250",
+   "fade": 0.38,
+   "when": "status == 'long_only'",
+   "color": "#98A4B3B3",
+   "dash": [
+    1.2,
+    1.2
+   ]
+  },
+  {
+   "type": "ribbon",
+   "along": "path",
+   "from": 0.86,
+   "to": 0.94,
+   "end": "lead.present ? lead.distance - 1.5 : 250",
+   "fade": 0.38,
+   "when": "engaged || status == 'override'",
+   "color": "=status == 'override' ? '#F2A93BF2' : '#5FE0D2F2'"
+  },
+  {
+   "type": "ribbon",
+   "along": "path",
+   "from": 0.86,
+   "to": 0.94,
+   "end": "lead.present ? lead.distance - 1.5 : 250",
+   "fade": 0.38,
+   "when": "status == 'long_only'",
+   "color": "#98A4B3B3",
+   "dash": [
+    1.2,
+    1.2
+   ]
+  },
+  {
+   "type": "ribbon",
+   "when": "engaged && longControl",
+   "along": "path",
+   "from": -0.9,
+   "to": 0.9,
+   "end": "lead.present ? lead.distance - 1.5 : 250",
+   "color": "#5FE0D226",
+   "dash": [
+    1.2,
+    4.8
+   ],
+   "fade": 0.38
+  },
+  {
+   "type": "rect",
+   "x": 0,
+   "y": 0,
+   "width": 1,
+   "height": 0.122,
+   "fill": {
+    "linear": [
+     0,
+     0,
+     0,
+     1
+    ],
+    "stops": [
+     [
+      0,
+      "#0000006E"
+     ],
+     [
+      1,
+      "#00000000"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "group",
+   "x": 0.012,
+   "y": 0.0296,
+   "width": 0.4,
+   "height": 0.045,
+   "aspect": 7.3,
+   "anchor": "topLeft",
+   "opacity": 0.68,
+   "layers": [
+    {
+     "type": "polygon",
+     "points": [
+      [
+       0.0,
+       1
+      ],
+      [
+       0.0625,
+       0
+      ],
+      [
+       0.125,
+       0
+      ],
+      [
+       0.0625,
+       1
+      ]
+     ],
+     "fill": {
+      "linear": [
+       0,
+       1,
+       1,
+       0
+      ],
+      "stops": [
+       [
+        0,
+        "#1C9A8D"
+       ],
+       [
+        1,
+        "#5CE6D6"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "polygon",
+     "points": [
+      [
+       0.091,
+       1
+      ],
+      [
+       0.1536,
+       0
+      ],
+      [
+       0.2163,
+       0
+      ],
+      [
+       0.1536,
+       1
+      ]
+     ],
+     "fill": {
+      "linear": [
+       0,
+       1,
+       1,
+       0
+      ],
+      "stops": [
+       [
+        0,
+        "#1C9A8D"
+       ],
+       [
+        1,
+        "#5CE6D6"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "text",
+     "text": "CommaView",
+     "x": 0.255,
+     "y": 0.98,
+     "anchor": "bottomLeft",
+     "size": 1.0,
+     "color": "#F4F7FA",
+     "outline": "#00000073"
+    }
+   ]
+  },
+  {
+   "type": "rect",
+   "when": "engaged && dm.awareness != null && dm.awareness > 0",
+   "x": "0.5 - dm.awareness / 2",
+   "y": 0,
+   "width": "dm.awareness",
+   "height": "dm.level > 0 ? 0.009 : 0.0056",
+   "fill": "=dm.level >= 2 ? '#FF6B6B' : dm.level == 1 ? '#F5BE66' : '#5FE0D28C'"
+  },
+  {
+   "type": "group",
+   "when": "lead.present && status != 'unknown'",
+   "pin": {
+    "lead": true,
+    "size": [
+     2.5,
+     1.9
+    ]
+   },
+   "y": 0.004,
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "radius": 0.04,
+     "fill": "=lead.vRel < -0.3 && lead.distance / -lead.vRel < 2.5 ? '#FF6B6B24' : '#5FE0D20F'"
+    },
+    {
+     "type": "polygon",
+     "points": [
+      [
+       0.0,
+       0.0
+      ],
+      [
+       0.3,
+       0.0
+      ],
+      [
+       0.3,
+       0.06
+      ],
+      [
+       0.06,
+       0.06
+      ],
+      [
+       0.06,
+       0.3
+      ],
+      [
+       0.0,
+       0.3
+      ]
+     ],
+     "fill": "=lead.vRel < -0.3 && lead.distance / -lead.vRel < 2.5 ? '#FF6B6B' : (lead.vRel < -0.3 && lead.distance / -lead.vRel < 5) || lead.gap < 0.9 ? '#F5BE66' : '#5FE0D2'"
+    },
+    {
+     "type": "polygon",
+     "points": [
+      [
+       1.0,
+       0.0
+      ],
+      [
+       0.7,
+       0.0
+      ],
+      [
+       0.7,
+       0.06
+      ],
+      [
+       0.94,
+       0.06
+      ],
+      [
+       0.94,
+       0.3
+      ],
+      [
+       1.0,
+       0.3
+      ]
+     ],
+     "fill": "=lead.vRel < -0.3 && lead.distance / -lead.vRel < 2.5 ? '#FF6B6B' : (lead.vRel < -0.3 && lead.distance / -lead.vRel < 5) || lead.gap < 0.9 ? '#F5BE66' : '#5FE0D2'"
+    },
+    {
+     "type": "polygon",
+     "points": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.3,
+       1.0
+      ],
+      [
+       0.3,
+       0.94
+      ],
+      [
+       0.06,
+       0.94
+      ],
+      [
+       0.06,
+       0.7
+      ],
+      [
+       0.0,
+       0.7
+      ]
+     ],
+     "fill": "=lead.vRel < -0.3 && lead.distance / -lead.vRel < 2.5 ? '#FF6B6B' : (lead.vRel < -0.3 && lead.distance / -lead.vRel < 5) || lead.gap < 0.9 ? '#F5BE66' : '#5FE0D2'"
+    },
+    {
+     "type": "polygon",
+     "points": [
+      [
+       1.0,
+       1.0
+      ],
+      [
+       0.7,
+       1.0
+      ],
+      [
+       0.7,
+       0.94
+      ],
+      [
+       0.94,
+       0.94
+      ],
+      [
+       0.94,
+       0.7
+      ],
+      [
+       1.0,
+       0.7
+      ]
+     ],
+     "fill": "=lead.vRel < -0.3 && lead.distance / -lead.vRel < 2.5 ? '#FF6B6B' : (lead.vRel < -0.3 && lead.distance / -lead.vRel < 5) || lead.gap < 0.9 ? '#F5BE66' : '#5FE0D2'"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "lead.present && status != 'unknown'",
+   "pin": {
+    "lead": true
+   },
+   "anchor": "top",
+   "y": 0.012,
+   "width": 0.3,
+   "height": 0.055,
+   "layers": [
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.5,
+     "anchor": "center",
+     "size": 0.62,
+     "font": "condensed",
+     "text": "{metric ? lead.distance : lead.distance * 3.28084|0} {metric ? 'm' : 'ft'}{lead.gap != null && lead.gap < 10 ? ' · ' + round(lead.gap, 1) + ' s' : ''}",
+     "color": "=lead.vRel < -0.3 && lead.distance / -lead.vRel < 2.5 ? '#FF6B6B' : (lead.vRel < -0.3 && lead.distance / -lead.vRel < 5) || lead.gap < 0.9 ? '#F5BE66' : '#E6ECF2'",
+     "background": "#090B0EB8",
+     "padding": [
+      0.5,
+      0.25
+     ],
+     "radius": 0.4
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "status != 'unknown' && speed != null",
+   "x": 0.05,
+   "y": 0.7102,
+   "width": 0.9,
+   "height": 0.2602,
+   "aspect": 2.8541,
+   "anchor": "bottom",
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "radius": 0.24,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       0,
+       1
+      ],
+      "stops": [
+       [
+        0,
+        "#102B30B4"
+       ],
+       [
+        1,
+        "#070C12E7"
+       ]
+      ]
+     },
+     "stroke": {
+      "linear": [
+       0,
+       0,
+       0,
+       1
+      ],
+      "stops": [
+       [
+        0,
+        "#65B4B05A"
+       ],
+       [
+        1,
+        "#29BFAF2E"
+       ]
+      ]
+     },
+     "strokeWidth": 0.0071,
+     "glow": {
+      "color": "#00000066",
+      "radius": 0.0996,
+      "dy": 0.0285
+     }
+    },
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "radius": 0.24,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       1,
+       1
+      ],
+      "stops": [
+       [
+        0,
+        "#6FBBB722"
+       ],
+       [
+        0.4,
+        "#6FBBB700"
+       ],
+       [
+        1,
+        "#29BFAF0A"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "line",
+     "x1": 0.2195,
+     "y1": 0.22,
+     "x2": 0.2195,
+     "y2": 0.78,
+     "stroke": "#FFFFFF24",
+     "strokeWidth": 0.0071
+    },
+    {
+     "type": "line",
+     "x1": 0.7805,
+     "y1": 0.22,
+     "x2": 0.7805,
+     "y2": 0.78,
+     "stroke": "#FFFFFF24",
+     "strokeWidth": 0.0071
+    },
+    {
+     "type": "text",
+     "text": "MAX",
+     "x": 0.1147,
+     "y": 0.3651,
+     "anchor": "bottom",
+     "size": 0.1068,
+     "font": "condensed",
+     "tracking": 0.08,
+     "color": "=setSpeed != null && (engaged || status == 'long_only') ? '#5FE0D2' : '#98A4B3'"
+    },
+    {
+     "type": "text",
+     "text": "{setSpeed == null ? '---' : '' + setSpeed}",
+     "x": 0.1147,
+     "y": 0.6467,
+     "anchor": "bottom",
+     "size": 0.2705,
+     "font": "condensed",
+     "color": "=setSpeed != null && (engaged || status == 'long_only') ? '#F4F7FA' : '#98A4B3'"
+    },
+    {
+     "type": "group",
+     "layers": [
+      {
+       "type": "arc",
+       "cx": 0.5,
+       "cy": 0.6726,
+       "r": 0.6263,
+       "start": 180,
+       "sweep": 180,
+       "stroke": "#FFFFFF2E",
+       "strokeWidth": 0.0356
+      },
+      {
+       "type": "line",
+       "x1": 0.3229,
+       "y1": 0.6726,
+       "x2": 0.298,
+       "y2": 0.6726,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0128
+      },
+      {
+       "type": "line",
+       "x1": 0.3221,
+       "y1": 0.5076,
+       "x2": 0.3079,
+       "y2": 0.4944,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0093
+      },
+      {
+       "type": "line",
+       "x1": 0.3487,
+       "y1": 0.3588,
+       "x2": 0.3366,
+       "y2": 0.3337,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0093
+      },
+      {
+       "type": "line",
+       "x1": 0.3901,
+       "y1": 0.2407,
+       "x2": 0.3813,
+       "y2": 0.2062,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0093
+      },
+      {
+       "type": "line",
+       "x1": 0.4422,
+       "y1": 0.1649,
+       "x2": 0.4376,
+       "y2": 0.1243,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0093
+      },
+      {
+       "type": "line",
+       "x1": 0.5,
+       "y1": 0.1673,
+       "x2": 0.5,
+       "y2": 0.0961,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0128
+      },
+      {
+       "type": "line",
+       "x1": 0.5578,
+       "y1": 0.1649,
+       "x2": 0.5624,
+       "y2": 0.1243,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0093
+      },
+      {
+       "type": "line",
+       "x1": 0.6099,
+       "y1": 0.2407,
+       "x2": 0.6187,
+       "y2": 0.2062,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0093
+      },
+      {
+       "type": "line",
+       "x1": 0.6513,
+       "y1": 0.3588,
+       "x2": 0.6634,
+       "y2": 0.3337,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0093
+      },
+      {
+       "type": "line",
+       "x1": 0.6779,
+       "y1": 0.5076,
+       "x2": 0.6921,
+       "y2": 0.4944,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0093
+      },
+      {
+       "type": "line",
+       "x1": 0.6771,
+       "y1": 0.6726,
+       "x2": 0.702,
+       "y2": 0.6726,
+       "stroke": "#FFFFFF78",
+       "strokeWidth": 0.0128
+      },
+      {
+       "type": "arc",
+       "when": "speed != null",
+       "cx": 0.5,
+       "cy": 0.6726,
+       "r": 0.6263,
+       "start": 180,
+       "sweep": "180 * clamp(smooth(speed, 250) / (metric ? 140 : 90), 0.01, 1)",
+       "stroke": "=status == 'override' ? '#F2A93B' : (engaged || status == 'long_only') ? '#5FE0D2' : '#A9B3BF'",
+       "strokeWidth": 0.0356,
+       "glow": {
+        "color": "=status == 'override' ? '#F2A93B' : (engaged || status == 'long_only') ? '#5FE0D2' : '#A9B3BF'",
+        "radius": 0.0641
+       }
+      },
+      {
+       "type": "text",
+       "text": "{speed|0}",
+       "x": 0.5,
+       "y": 0.678,
+       "anchor": "bottom",
+       "size": 0.4128,
+       "font": "condensed",
+       "color": "#F4F7FA",
+       "outline": "#00000096"
+      },
+      {
+       "type": "text",
+       "text": "{speedUnit}",
+       "tracking": 0.12,
+       "x": 0.5,
+       "y": 0.7412,
+       "anchor": "bottom",
+       "size": 0.0854,
+       "color": "#E6ECF2"
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "text": "{pick(status, 'engaged', longControl ? 'STEERING ACTIVE · SPEED ACTIVE' : 'STEERING ACTIVE', 'lat_only', 'STEERING ACTIVE · SPEED MANUAL', 'long_only', 'STEERING MANUAL · SPEED ACTIVE', 'override', 'DRIVER OVERRIDE', 'MANUAL CONTROL')}",
+     "x": 0.5,
+     "y": 0.8275,
+     "anchor": "bottom",
+     "size": 0.0569,
+     "tracking": 0.14,
+     "maxWidth": 0.4988,
+     "color": "#E6ECF2"
+    },
+    {
+     "type": "group",
+     "layers": [
+      {
+       "type": "circle",
+       "when": "speedLimitOver && !(signStyle == 'mutcd' || signStyle == 'canada')",
+       "cx": 0.885,
+       "cy": 0.4427,
+       "r": 0.2276,
+       "fill": "#F5BE6659",
+       "stroke": "#F5BE66",
+       "strokeWidth": 0.0146
+      },
+      {
+       "type": "circle",
+       "when": "!(signStyle == 'mutcd' || signStyle == 'canada')",
+       "cx": 0.885,
+       "cy": 0.4427,
+       "r": 0.1984,
+       "fill": "#FFFFFF"
+      },
+      {
+       "type": "circle",
+       "when": "!(signStyle == 'mutcd' || signStyle == 'canada')",
+       "cx": 0.885,
+       "cy": 0.4427,
+       "r": 0.1786,
+       "stroke": "#E52A2A",
+       "strokeWidth": 0.0397
+      },
+      {
+       "type": "group",
+       "when": "signStyle == 'mutcd' || signStyle == 'canada'",
+       "x": 0.8308,
+       "y": 0.2443,
+       "width": 0.1085,
+       "height": 0.3969,
+       "layers": [
+        {
+         "type": "rect",
+         "when": "speedLimitOver",
+         "x": -0.12,
+         "y": -0.09,
+         "width": 1.24,
+         "height": 1.18,
+         "radius": 0.16,
+         "fill": "#F5BE6659",
+         "stroke": "#F5BE66",
+         "strokeWidth": 0.03
+        },
+        {
+         "type": "rect",
+         "x": 0,
+         "y": 0,
+         "width": 1,
+         "height": 1,
+         "radius": 0.1,
+         "fill": "#FFFFFF",
+         "stroke": "#0B0D10",
+         "strokeWidth": 0.035
+        },
+        {
+         "type": "text",
+         "text": "{signStyle == 'canada' ? 'MAXIMUM' : 'SPEED LIMIT'}",
+         "x": 0.5,
+         "y": 0.08,
+         "anchor": "top",
+         "size": 0.14,
+         "weight": "bold",
+         "color": "#0B0D10",
+         "wrap": {
+          "width": 0.8,
+          "lines": 2
+         }
+        },
+        {
+         "type": "text",
+         "text": "{speedLimit == null ? '---' : '' + speedLimit}",
+         "x": 0.5,
+         "y": 0.95,
+         "anchor": "bottom",
+         "size": 0.46,
+         "font": "condensed",
+         "maxWidth": 0.86,
+         "color": "=speedLimit == null ? '#919B95' : '#0B0D10'"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "when": "!(signStyle == 'mutcd' || signStyle == 'canada')",
+       "text": "{speedLimit == null ? '---' : '' + speedLimit}",
+       "x": 0.885,
+       "y": 0.5463,
+       "anchor": "bottom",
+       "size": 0.1786,
+       "font": "condensed",
+       "color": "=speedLimit == null ? '#919B95' : '#0B0D10'"
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "when": "steer.torque != null && engaged",
+     "layers": [
+      {
+       "type": "polygon",
+       "points": [
+        [
+         0.1708,
+         0.8826
+        ],
+        [
+         0.2178,
+         0.8988
+        ],
+        [
+         0.2649,
+         0.9114
+        ],
+        [
+         0.3119,
+         0.9209
+        ],
+        [
+         0.3589,
+         0.9277
+        ],
+        [
+         0.4059,
+         0.9324
+        ],
+        [
+         0.453,
+         0.9351
+        ],
+        [
+         0.5,
+         0.9359
+        ],
+        [
+         0.547,
+         0.9351
+        ],
+        [
+         0.5941,
+         0.9324
+        ],
+        [
+         0.6411,
+         0.9277
+        ],
+        [
+         0.6881,
+         0.9209
+        ],
+        [
+         0.7351,
+         0.9114
+        ],
+        [
+         0.7822,
+         0.8988
+        ],
+        [
+         0.8292,
+         0.8826
+        ],
+        [
+         0.8292,
+         0.8826
+        ],
+        [
+         0.7822,
+         0.9108
+        ],
+        [
+         0.7351,
+         0.9293
+        ],
+        [
+         0.6881,
+         0.9429
+        ],
+        [
+         0.6411,
+         0.9527
+        ],
+        [
+         0.5941,
+         0.9593
+        ],
+        [
+         0.547,
+         0.9632
+        ],
+        [
+         0.5,
+         0.9644
+        ],
+        [
+         0.453,
+         0.9632
+        ],
+        [
+         0.4059,
+         0.9593
+        ],
+        [
+         0.3589,
+         0.9527
+        ],
+        [
+         0.3119,
+         0.9429
+        ],
+        [
+         0.2649,
+         0.9293
+        ],
+        [
+         0.2178,
+         0.9108
+        ],
+        [
+         0.1708,
+         0.8826
+        ]
+       ],
+       "fill": "#273E46F5"
+      },
+      {
+       "type": "polygon",
+       "when": "steer.torque != null && abs(steer.torque) > 0.02",
+       "points": [
+        [
+         "0.5 + (steer.torque * 0) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 0) * (steer.torque * 0))"
+        ],
+        [
+         "0.5 + (steer.torque * 0.25) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 0.25) * (steer.torque * 0.25))"
+        ],
+        [
+         "0.5 + (steer.torque * 0.5) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 0.5) * (steer.torque * 0.5))"
+        ],
+        [
+         "0.5 + (steer.torque * 0.75) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 0.75) * (steer.torque * 0.75))"
+        ],
+        [
+         "0.5 + (steer.torque * 1.0) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 1.0) * (steer.torque * 1.0))"
+        ],
+        [
+         "0.5 + (steer.torque * 1.0) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 1.0) * (steer.torque * 1.0)) + 0.0427 * (1 - (steer.torque * 1.0) * (steer.torque * 1.0))"
+        ],
+        [
+         "0.5 + (steer.torque * 0.75) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 0.75) * (steer.torque * 0.75)) + 0.0427 * (1 - (steer.torque * 0.75) * (steer.torque * 0.75))"
+        ],
+        [
+         "0.5 + (steer.torque * 0.5) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 0.5) * (steer.torque * 0.5)) + 0.0427 * (1 - (steer.torque * 0.5) * (steer.torque * 0.5))"
+        ],
+        [
+         "0.5 + (steer.torque * 0.25) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 0.25) * (steer.torque * 0.25)) + 0.0427 * (1 - (steer.torque * 0.25) * (steer.torque * 0.25))"
+        ],
+        [
+         "0.5 + (steer.torque * 0) * 0.3292",
+         "0.9359 - 0.0427 * ((steer.torque * 0) * (steer.torque * 0)) + 0.0427 * (1 - (steer.torque * 0) * (steer.torque * 0))"
+        ]
+       ],
+       "fill": "=abs(steer.torque) > 0.9 ? '#F26A5F' : abs(steer.torque) > 0.75 ? '#D9A94F' : '#29BFAF'"
+      },
+      {
+       "type": "line",
+       "x1": 0.5,
+       "y1": 0.916,
+       "x2": 0.5,
+       "y2": 0.9559,
+       "stroke": "#4A767FD1",
+       "strokeWidth": 0.0057
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "when": "blinker.left || blindspot.left",
+     "layers": [
+      {
+       "type": "circle",
+       "when": "blinker.left",
+       "cx": -0.0698,
+       "cy": 0.4427,
+       "r": 0.1765,
+       "fill": "#090B0E9C"
+      },
+      {
+       "type": "polygon",
+       "when": "blinker.left",
+       "points": [
+        [
+         -0.042,
+         0.3573
+        ],
+        [
+         -0.053,
+         0.3573
+        ],
+        [
+         -0.0727,
+         0.4427
+        ],
+        [
+         -0.053,
+         0.5281
+        ],
+        [
+         -0.042,
+         0.5281
+        ],
+        [
+         -0.0617,
+         0.4427
+        ]
+       ],
+       "fill": "=blindspot.left ? '#F5BE66' : '#3FB950'",
+       "opacity": "clock % 750 < 300 ? 1 : 0.45"
+      },
+      {
+       "type": "polygon",
+       "when": "blinker.left",
+       "points": [
+        [
+         -0.0779,
+         0.3573
+        ],
+        [
+         -0.0889,
+         0.3573
+        ],
+        [
+         -0.1086,
+         0.4427
+        ],
+        [
+         -0.0889,
+         0.5281
+        ],
+        [
+         -0.0779,
+         0.5281
+        ],
+        [
+         -0.0977,
+         0.4427
+        ]
+       ],
+       "fill": "=blindspot.left ? '#F5BE66' : '#3FB950'",
+       "opacity": "clock % 750 < 300 ? 1 : 0.45"
+      },
+      {
+       "type": "rect",
+       "when": "blindspot.left && !blinker.left",
+       "x": -0.1247,
+       "y": -0.0413,
+       "width": 0.1097,
+       "height": 0.2847,
+       "radius": 0.0626,
+       "fill": "#090B0EB8",
+       "stroke": "#F5BE66B3",
+       "strokeWidth": 0.0107
+      },
+      {
+       "type": "image",
+       "when": "blindspot.left && !blinker.left",
+       "image": "car",
+       "x": -0.1047,
+       "y": -0.0128,
+       "width": 0.0698,
+       "height": 0.2278,
+       "tint": "#F5BE66"
+      },
+      {
+       "type": "text",
+       "when": "blindspot.left && blinker.left",
+       "text": "BLIND SPOT",
+       "x": -0.0698,
+       "y": 0.1523,
+       "anchor": "center",
+       "size": 0.0783,
+       "color": "#F5BE66",
+       "background": "#090B0EB8"
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "when": "blinker.right || blindspot.right",
+     "layers": [
+      {
+       "type": "circle",
+       "when": "blinker.right",
+       "cx": 1.0692,
+       "cy": 0.4427,
+       "r": 0.1765,
+       "fill": "#090B0E9C"
+      },
+      {
+       "type": "polygon",
+       "when": "blinker.right",
+       "points": [
+        [
+         1.0414,
+         0.3573
+        ],
+        [
+         1.0524,
+         0.3573
+        ],
+        [
+         1.0721,
+         0.4427
+        ],
+        [
+         1.0524,
+         0.5281
+        ],
+        [
+         1.0414,
+         0.5281
+        ],
+        [
+         1.0611,
+         0.4427
+        ]
+       ],
+       "fill": "=blindspot.right ? '#F5BE66' : '#3FB950'",
+       "opacity": "clock % 750 < 300 ? 1 : 0.45"
+      },
+      {
+       "type": "polygon",
+       "when": "blinker.right",
+       "points": [
+        [
+         1.0773,
+         0.3573
+        ],
+        [
+         1.0883,
+         0.3573
+        ],
+        [
+         1.108,
+         0.4427
+        ],
+        [
+         1.0883,
+         0.5281
+        ],
+        [
+         1.0773,
+         0.5281
+        ],
+        [
+         1.0971,
+         0.4427
+        ]
+       ],
+       "fill": "=blindspot.right ? '#F5BE66' : '#3FB950'",
+       "opacity": "clock % 750 < 300 ? 1 : 0.45"
+      },
+      {
+       "type": "rect",
+       "when": "blindspot.right && !blinker.right",
+       "x": 1.0144,
+       "y": -0.0413,
+       "width": 0.1097,
+       "height": 0.2847,
+       "radius": 0.0626,
+       "fill": "#090B0EB8",
+       "stroke": "#F5BE66B3",
+       "strokeWidth": 0.0107
+      },
+      {
+       "type": "image",
+       "when": "blindspot.right && !blinker.right",
+       "image": "car",
+       "x": 1.0343,
+       "y": -0.0128,
+       "width": 0.0698,
+       "height": 0.2278,
+       "tint": "#F5BE66"
+      },
+      {
+       "type": "text",
+       "when": "blindspot.right && blinker.right",
+       "text": "BLIND SPOT",
+       "x": 1.0692,
+       "y": 0.1523,
+       "anchor": "center",
+       "size": 0.0783,
+       "color": "#F5BE66",
+       "background": "#090B0EB8"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "status != 'unknown'",
+   "x": 0,
+   "y": 0.7291,
+   "width": 0.5,
+   "height": 0.1259,
+   "aspect": 2.9412,
+   "anchor": "topLeft",
+   "layers": [
+    {
+     "type": "text",
+     "text": "    {pick(status, 'engaged', 'ENGAGED', 'lat_only', 'STEERING ONLY', 'long_only', 'SPEED ONLY', 'override', 'OVERRIDE', 'NOT ENGAGED')}",
+     "x": 0.129,
+     "y": 0.8841,
+     "anchor": "bottomLeft",
+     "size": 0.2059,
+     "weight": "semibold",
+     "tracking": 0.08,
+     "color": "=status == 'override' ? '#F2A93B' : (engaged || status == 'long_only') ? '#5FE0D2' : '#A9B3BF'",
+     "background": "=pick(status, 'engaged', '#1B3B3AE6', 'long_only', '#1B3B3AE6', 'lat_only', '#1B3B3AE6', 'override', '#3A2E1CE6', '#22262BE6')",
+     "padding": [
+      0.7,
+      0.62
+     ],
+     "radius": 1.2
+    },
+    {
+     "type": "circle",
+     "when": "status == 'engaged'",
+     "cx": 0.15,
+     "cy": 0.7647,
+     "r": 0.0882,
+     "fill": "=status == 'override' ? '#F2A93B' : (engaged || status == 'long_only') ? '#5FE0D2' : '#A9B3BF'",
+     "glow": {
+      "color": "=mixColor('#5FE0D2FF', '#5FE0D200', ease(clamp(since(status) / 900, 0, 1)))",
+      "radius": 0.1471
+     }
+    },
+    {
+     "type": "circle",
+     "when": "status != 'engaged'",
+     "cx": 0.15,
+     "cy": 0.7647,
+     "r": 0.0882,
+     "stroke": "=status == 'override' ? '#F2A93B' : (engaged || status == 'long_only') ? '#5FE0D2' : '#A9B3BF'",
+     "strokeWidth": 0.03,
+     "glow": {
+      "color": "=mixColor('#A9B3BFFF', '#A9B3BF00', ease(clamp(since(status) / 900, 0, 1)))",
+      "radius": 0.1471
+     }
+    },
+    {
+     "type": "arc",
+     "when": "status == 'lat_only' || status == 'long_only'",
+     "cx": 0.15,
+     "cy": 0.7647,
+     "r": 0.0882,
+     "start": "status == 'lat_only' ? 90 : 0",
+     "sweep": 180,
+     "fill": "=status == 'override' ? '#F2A93B' : (engaged || status == 'long_only') ? '#5FE0D2' : '#A9B3BF'"
+    },
+    {
+     "type": "group",
+     "when": "experimental",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 0.4118,
+     "layers": [
+      {
+       "type": "text",
+       "text": "      EXPERIMENTAL",
+       "x": 0.1241,
+       "y": 0.73,
+       "anchor": "bottomLeft",
+       "size": 0.45,
+       "weight": "semibold",
+       "tracking": 0.1,
+       "color": "#E6ECF2",
+       "background": "#090B0EB8",
+       "padding": [
+        0.7,
+        0.55
+       ],
+       "radius": 1.2
+      },
+      {
+       "type": "group",
+       "x": 0.11,
+       "y": 0.1429,
+       "width": 0.1,
+       "height": 0.7143,
+       "layers": [
+        {
+         "type": "path",
+         "d": "M0.0200 0.5000 A0.48 0.18 0 1 0 0.9800 0.5000 A0.48 0.18 0 1 0 0.0200 0.5000 Z M0.2600 0.0843 A0.48 0.18 60 1 0 0.7400 0.9157 A0.48 0.18 60 1 0 0.2600 0.0843 Z M0.7400 0.0843 A0.48 0.18 120 1 0 0.2600 0.9157 A0.48 0.18 120 1 0 0.7400 0.0843 Z",
+         "stroke": "#FFB25B",
+         "strokeWidth": 0.06
+        },
+        {
+         "type": "circle",
+         "cx": 0.5,
+         "cy": 0.5,
+         "r": 0.1,
+         "fill": "#FFB25B"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "!design && alert && alert.size != 'full'",
+   "x": 0.2,
+   "y": 0.1074,
+   "width": 0.6,
+   "height": 0.16,
+   "aspect": 4.2,
+   "anchor": "top",
+   "opacity": "ease(clamp(since(alert.text1) / 250, 0, 1))",
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "radius": 0.16,
+     "fill": "#090B0EE6",
+     "glow": {
+      "color": "#00000080",
+      "radius": 0.12,
+      "dy": 0.04
+     }
+    },
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "radius": 0.16,
+     "fill": "=(alert.severity == 'critical' ? '#FF6B6B' : alert.severity == 'warning' ? '#F5BE66' : '#E6ECF2') + (alert.severity == 'critical' ? '3D' : '24')",
+     "stroke": "=(alert.severity == 'critical' ? '#FF6B6B' : alert.severity == 'warning' ? '#F5BE66' : '#E6ECF2') + 'BF'",
+     "strokeWidth": 0.02
+    },
+    {
+     "type": "text",
+     "text": "{alert.text1}",
+     "x": 0.06,
+     "y": 0.47,
+     "anchor": "bottomLeft",
+     "size": 0.3,
+     "weight": "semibold",
+     "maxWidth": 0.88,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "text": "{alert.text2}",
+     "x": 0.06,
+     "y": 0.56,
+     "anchor": "topLeft",
+     "size": 0.2,
+     "wrap": {
+      "width": 0.88,
+      "lines": 2
+     },
+     "color": "#FFFFFFE0"
+    }
+   ]
+  },
+  {
+   "type": "edgeGlow",
+   "when": "blindspot.left && blinker.left",
+   "color": "#F5BE66",
+   "reach": 0.09,
+   "sides": [
+    "left"
+   ],
+   "opacity": "0.7 + 0.3 * sin(clock % 1000 * 0.36)"
+  },
+  {
+   "type": "edgeGlow",
+   "when": "blindspot.right && blinker.right",
+   "color": "#F5BE66",
+   "reach": 0.09,
+   "sides": [
+    "right"
+   ],
+   "opacity": "0.7 + 0.3 * sin(clock % 1000 * 0.36)"
+  }
+ ]
+}

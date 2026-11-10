@@ -1,0 +1,16 @@
+{
+  "sdk": 1,
+  "id": "bluepilot",
+  "name": "BluePilot: hybrid gauges, lead overlay, confidence ball",
+  "version": "0.2.2",
+  "author": "CommaView",
+  "forks": ["bluepilot"],
+  "description": "What BluePilot (BluePilotDev/bluepilot) draws on top of sunnypilot's onroad screen, each where the driver turned it on in BluePilot's settings: the Ford hybrid battery and power flow gauges, the brake lights, the lateral mode letter (A / C / OP), the confidence ball, the pulsing blind spot screen edges, BluePilot's lane lines, the radar lead overlay (distance, speed, time gap) and the comma four's lower-right complication. BluePilot only.",
+  "license": "MIT",
+  "runtime": {
+    "entry": "export.py",
+    "services": ["carStateBP", "controllerStateBP", "radarState", "modelV2"],
+    "requiresModules": ["openpilot.selfdrive.ui.bp.onroad.blindspot_renderer"]
+  },
+  "overlay": "overlay.json"
+}

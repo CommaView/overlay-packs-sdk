@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "id": "shapes",
+  "standalone": true,
+  "images": {
+    "arrow": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAQ0lEQVR4nGNgoCX4f0LjPwgPjAEwzWQbQpEB6JpJNoQiA3BpJtoQigwgpJmgIRQZQKxmnIZQZACpmjEMocgAcjXDMAAd5ncQ8RjVMQAAAABJRU5ErkJggg=="
+  },
+  "layers": [
+    {
+      "type": "group",
+      "x": 0.80, "y": 0.58, "width": 0.18, "height": 0.3,
+      "layers": [
+        {"type": "rect", "x": 0, "y": 0, "width": 1, "height": 1, "radius": 0.1, "fill": "#000000A0"},
+        {"type": "arc", "cx": 0.5, "cy": 0.55, "r": 0.35, "start": 135, "sweep": 270,
+         "stroke": "#FFFFFF40", "strokeWidth": 0.06},
+        {"type": "arc", "cx": 0.5, "cy": 0.55, "r": 0.35, "start": 135, "sweep": "270 * clamp(speed / 120, 0, 1)",
+         "stroke": "=speed > 100 ? '#FF5050' : '#37AAFF'", "strokeWidth": 0.06},
+        {"type": "text", "text": "{speed|0}", "x": 0.5, "y": 0.55, "anchor": "center", "size": 0.2,
+         "color": "#FFFFFF", "font": "mono"}
+      ]
+    },
+    {"type": "circle", "when": "clock % 1000 < 500", "cx": 0.04, "cy": 0.62, "r": 0.02, "fill": "#FF3030"},
+    {"type": "line", "x1": 0.02, "y1": 0.97, "x2": "0.02 + 0.28 * clamp(speed / 120, 0, 1)", "y2": 0.97,
+     "stroke": "=rgba(255, 255, 255, 0.4 + 0.6 * clamp(speed / 120, 0, 1))", "strokeWidth": 0.008},
+    {"type": "polygon", "points": [[0.45, 0.92], [0.55, 0.92], [0.5, 0.85]],
+     "fill": "#FFFFFF80", "stroke": "#000000", "strokeWidth": 0.004},
+    {
+      "type": "group",
+      "x": 0.05, "y": 0.4, "width": 0.08, "height": 0.12, "rotation": "clock / 10 % 360",
+      "layers": [
+        {"type": "image", "image": "arrow", "x": 0, "y": 0, "width": 1, "height": 1}
+      ]
+    },
+    {
+      "type": "group",
+      "pin": {"lead": true},
+      "y": -0.02, "width": 0.12, "height": 0.06,
+      "layers": [
+        {"type": "badge", "text": "{lead.distance|0} m", "x": 0, "y": 0, "width": 1, "height": 1,
+         "fill": "#101D2DE1", "textColor": "#FFCF6E"}
+      ]
+    },
+    {
+      "type": "group",
+      "pin": {"path": "20"},
+      "anchor": "center", "width": 0.03, "height": 0.05,
+      "layers": [{"type": "circle", "cx": 0.5, "cy": 0.5, "r": 0.4, "fill": "#00FF00"}]
+    },
+    {
+      "type": "group",
+      "pin": {"path": "40", "offset": -1.8},
+      "anchor": "center", "width": 0.02, "height": 0.03,
+      "layers": [{"type": "circle", "cx": 0.5, "cy": 0.5, "r": 0.4, "fill": "#FF00FF"}]
+    },
+    {
+      "type": "group",
+      "pin": {"path": "40", "offset": 1.8},
+      "anchor": "center", "width": 0.02, "height": 0.03,
+      "layers": [{"type": "circle", "cx": 0.5, "cy": 0.5, "r": 0.4, "fill": "#FF00FF"}]
+    }
+  ]
+}

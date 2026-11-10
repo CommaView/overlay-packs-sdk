@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "id": "datetime",
+  "standalone": true,
+  "layers": [
+    {
+      "type": "text",
+      "text": "{clock|date:yyyy-MM-dd}  {clock|date:HH:mm:ss}",
+      "x": 0.02, "y": 0.97, "anchor": "bottomLeft", "size": 0.04,
+      "color": "#FFFFFF", "outline": "#000000C0", "font": "mono"
+    }
+  ]
+}

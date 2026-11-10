@@ -1,0 +1,8 @@
+{
+  "id": "commaview-overlay",
+  "name": "CommaView overlay",
+  "version": "0.2.1",
+  "sdk": 1,
+  "author": "CommaView (example pack)",
+  "description": "CommaView's own onroad design (its road, cluster, lead reticle, status, signals and sign) redrawn as a pack, offered as a design of its own: an example of a whole design made with a pack. The app draws it alone; nothing runs on the comma."
+}

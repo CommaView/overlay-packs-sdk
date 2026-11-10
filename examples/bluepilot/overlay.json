@@ -1,0 +1,1073 @@
+{
+ "format": 1,
+ "level": 2,
+ "id": "bluepilot",
+ "hide": [
+  {
+   "part": "speed",
+   "when": "ext.brakeLights && screen == 'comma3x' && !ext.hideSpeed"
+  },
+  {
+   "part": "confidenceBall",
+   "when": "screen == 'comma4'"
+  },
+  {
+   "part": "border",
+   "when": "ext.hideBorder"
+  },
+  {
+   "part": "laneLines",
+   "when": "screen == 'comma3x'"
+  }
+ ],
+ "inset": {
+  "left": 0.056,
+  "when": "screen == 'comma3x' && ext.show.ball"
+ },
+ "layers": [
+  {
+   "type": "backdrop",
+   "when": "ext.hideCamera",
+   "fill": "#000000"
+  },
+  {
+   "type": "ribbon",
+   "along": "laneLine",
+   "index": 0,
+   "when": "screen == 'comma3x' && lane.0.prob >= 0.4",
+   "from": "-(ext.hideCamera ? 0.09 : 0.05) * lane.0.prob",
+   "to": "(ext.hideCamera ? 0.09 : 0.05) * lane.0.prob",
+   "color": "=ext.hideCamera && status != 'engaged' ? '#B9CDE1' : status == 'disengaged' ? '#000000' : '#FFFFFF'",
+   "opacity": "clamp(lane.0.prob * 0.8, 0.3, 0.8) * 0.4"
+  },
+  {
+   "type": "ribbon",
+   "along": "laneLine",
+   "index": 1,
+   "when": "screen == 'comma3x' && lane.1.prob >= 0.4",
+   "from": "-(ext.hideCamera ? 0.075 : 0.05) * lane.1.prob",
+   "to": "(ext.hideCamera ? 0.075 : 0.05) * lane.1.prob",
+   "color": "=ext.hideCamera && status != 'engaged' ? '#B9CDE1' : status == 'disengaged' ? '#000000' : ext.laneWhite ? '#FFFFFF' : status == 'engaged' ? mixColor('#000000', '#00FF50', (0.4 + 0.6 * lane.1.prob)) : status == 'override' ? mixColor('#000000', '#919B95', (0.4 + 0.6 * lane.1.prob)) : '#000000'",
+   "opacity": "clamp(lane.1.prob * 0.8, 0.3, 0.8)"
+  },
+  {
+   "type": "ribbon",
+   "along": "laneLine",
+   "index": 2,
+   "when": "screen == 'comma3x' && lane.2.prob >= 0.4",
+   "from": "-(ext.hideCamera ? 0.075 : 0.05) * lane.2.prob",
+   "to": "(ext.hideCamera ? 0.075 : 0.05) * lane.2.prob",
+   "color": "=ext.hideCamera && status != 'engaged' ? '#B9CDE1' : status == 'disengaged' ? '#000000' : ext.laneWhite ? '#FFFFFF' : status == 'engaged' ? mixColor('#000000', '#00FF50', (0.4 + 0.6 * lane.2.prob)) : status == 'override' ? mixColor('#000000', '#919B95', (0.4 + 0.6 * lane.2.prob)) : '#000000'",
+   "opacity": "clamp(lane.2.prob * 0.8, 0.3, 0.8)"
+  },
+  {
+   "type": "ribbon",
+   "along": "laneLine",
+   "index": 3,
+   "when": "screen == 'comma3x' && lane.3.prob >= 0.4",
+   "from": "-(ext.hideCamera ? 0.09 : 0.05) * lane.3.prob",
+   "to": "(ext.hideCamera ? 0.09 : 0.05) * lane.3.prob",
+   "color": "=ext.hideCamera && status != 'engaged' ? '#B9CDE1' : status == 'disengaged' ? '#000000' : '#FFFFFF'",
+   "opacity": "clamp(lane.3.prob * 0.8, 0.3, 0.8) * 0.4"
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma3x' && ext.show.ball",
+   "x": 0.007,
+   "y": 0,
+   "width": 0.056,
+   "height": 1,
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       1,
+       0
+      ],
+      "stops": [
+       [
+        0,
+        "#14141478"
+       ],
+       [
+        1,
+        "#14141400"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "rect",
+     "when": "status == 'lat_only'",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       1,
+       0
+      ],
+      "stops": [
+       [
+        0,
+        "#00C8C800"
+       ],
+       [
+        0.33,
+        "#00C8C896"
+       ],
+       [
+        0.67,
+        "#00C8C896"
+       ],
+       [
+        1,
+        "#00C8C800"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "rect",
+     "when": "status == 'long_only'",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       1,
+       0
+      ],
+      "stops": [
+       [
+        0,
+        "#961CA800"
+       ],
+       [
+        0.33,
+        "#961CA896"
+       ],
+       [
+        0.67,
+        "#961CA896"
+       ],
+       [
+        1,
+        "#961CA800"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "circle",
+     "cx": 0.5,
+     "cy": "1 - clamp((ext.confidence + 0.5) / 1.5, 0, 1) + 0.046",
+     "r": "0.046",
+     "fill": {
+      "linear": [
+       0,
+       0,
+       0,
+       1
+      ],
+      "stops": [
+       [
+        0,
+        "=status == 'disengaged' || status == 'unknown' ? '#323232' : status == 'override' ? '#FFFFFF' : ext.confidence > 0.5 ? '#00FFCC' : ext.confidence > 0.2 ? '#FFC800' : '#FF0015'"
+       ],
+       [
+        1,
+        "=status == 'disengaged' || status == 'unknown' ? '#0D0D0D' : status == 'override' ? '#525252' : ext.confidence > 0.5 ? '#00FF26' : ext.confidence > 0.2 ? '#FF7300' : '#FF0059'"
+       ]
+      ]
+     }
+    }
+   ],
+   "aspect": 0.11,
+   "anchor": "topLeft"
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma4'",
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "fill": "#000000"
+    },
+    {
+     "type": "rect",
+     "when": "status == 'lat_only'",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       1,
+       0
+      ],
+      "stops": [
+       [
+        0,
+        "#00C8C800"
+       ],
+       [
+        0.33,
+        "#00C8C896"
+       ],
+       [
+        0.67,
+        "#00C8C896"
+       ],
+       [
+        1,
+        "#00C8C800"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "rect",
+     "when": "status == 'long_only'",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       1,
+       0
+      ],
+      "stops": [
+       [
+        0,
+        "#961CA800"
+       ],
+       [
+        0.33,
+        "#961CA896"
+       ],
+       [
+        0.67,
+        "#961CA896"
+       ],
+       [
+        1,
+        "#961CA800"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "circle",
+     "cx": 0.5,
+     "cy": "1 - clamp((ext.confidence + 0.5) / 1.5, 0, 1) + 0.1",
+     "r": "0.1",
+     "fill": {
+      "linear": [
+       0,
+       0,
+       0,
+       1
+      ],
+      "stops": [
+       [
+        0,
+        "=status == 'disengaged' || status == 'unknown' ? '#323232' : status == 'override' ? '#FFFFFF' : ext.confidence > 0.5 ? '#00FFCC' : ext.confidence > 0.2 ? '#FFC800' : '#FF0015'"
+       ],
+       [
+        1,
+        "=status == 'disengaged' || status == 'unknown' ? '#0D0D0D' : status == 'override' ? '#525252' : ext.confidence > 0.5 ? '#00FF26' : ext.confidence > 0.2 ? '#FF7300' : '#FF0059'"
+       ]
+      ]
+     }
+    }
+   ],
+   "pin": {
+    "hud": "confidenceBall"
+   }
+  },
+  {
+   "type": "edgeGlow",
+   "when": "ext.show.blindspot",
+   "color": "#FF0000",
+   "sides": [
+    "left"
+   ],
+   "reach": "screen == 'comma4' ? 0.5 : 0.23",
+   "opacity": "smooth(blindspot.left ? 1 : 0, 150) * 0.75 * (reduceMotion ? 1 : 0.65 + 0.35 * sin(integrate(1) * 120))"
+  },
+  {
+   "type": "edgeGlow",
+   "when": "ext.show.blindspot",
+   "color": "#FF0000",
+   "sides": [
+    "right"
+   ],
+   "reach": "screen == 'comma4' ? 0.5 : 0.23",
+   "opacity": "smooth(blindspot.right ? 1 : 0, 150) * 0.75 * (reduceMotion ? 1 : 0.65 + 0.35 * sin(integrate(1) * 120))"
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma3x' && ext.battery != null",
+   "x": "0.13 + (ext.show.ball ? 0.056 : 0)",
+   "y": 0.82,
+   "width": 0.11,
+   "height": 0.13,
+   "aspect": 1.8,
+   "anchor": "topLeft",
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0.05,
+     "width": 0.45,
+     "height": 0.45,
+     "radius": 0.08,
+     "fill": "#282828DC",
+     "stroke": "#C8C8C8",
+     "strokeWidth": 0.03
+    },
+    {
+     "type": "rect",
+     "x": 0.45,
+     "y": 0.18,
+     "width": 0.04,
+     "height": 0.19,
+     "fill": "#C8C8C8"
+    },
+    {
+     "type": "rect",
+     "x": 0.02,
+     "y": 0.09,
+     "width": "0.41 * ext.battery.soc / 100",
+     "height": 0.37,
+     "radius": 0.05,
+     "fill": "=ext.battery.soc < 20 ? '#C86464' : ext.battery.soc < 50 ? '#C8C864' : '#64C864'"
+    },
+    {
+     "type": "text",
+     "text": "{ext.battery.socText}",
+     "x": 0.55,
+     "y": 0.28,
+     "anchor": "topLeft",
+     "size": 0.3,
+     "weight": "bold",
+     "color": "#FFFFFF",
+     "outline": "#00000096"
+    },
+    {
+     "type": "text",
+     "text": "{ext.battery.voltsText}",
+     "x": 0,
+     "y": 0.62,
+     "anchor": "topLeft",
+     "size": 0.3,
+     "weight": "medium",
+     "color": "#FFFFFF",
+     "outline": "#00000096"
+    },
+    {
+     "type": "text",
+     "text": "{ext.battery.ampsText}",
+     "x": 0.55,
+     "y": 0.62,
+     "anchor": "topLeft",
+     "size": 0.3,
+     "weight": "medium",
+     "color": "=ext.battery.amps > 0 ? '#64FF64' : ext.battery.amps < 0 ? '#FF6464' : '#FFFFFF'",
+     "outline": "#00000096"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "ext.flow != null && screen == 'comma3x'",
+   "x": 0.34,
+   "y": 0.856,
+   "width": 0.32,
+   "height": 0.116,
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "radius": 0.15,
+     "fill": "#14141464",
+     "stroke": "=ext.flow.value < 0 ? '#00FF7FB4' : ext.flow.ev ? '#1E90FFB4' : ext.flow.hybrid ? '#6495EDB4' : '#4682B4A0'",
+     "strokeWidth": 0.02
+    },
+    {
+     "type": "rect",
+     "x": 0.03,
+     "y": 0.1,
+     "width": 0.94,
+     "height": 0.32,
+     "radius": 0.1,
+     "fill": "#34495EC8",
+     "stroke": "#BDC3C778",
+     "strokeWidth": 0.012
+    },
+    {
+     "type": "rect",
+     "x": "0.5 - 0.47 * abs(ext.flow.value)",
+     "y": 0.1,
+     "width": "0.94 * abs(ext.flow.value)",
+     "height": 0.32,
+     "radius": 0.1,
+     "fill": "=ext.flow.value < 0 ? '#00DC50' : ext.flow.ev ? '#1E90FF' : mixColor('#C8C8C8', '#FF8C00', clamp((abs(ext.flow.value) - 0.33) / 0.67, 0, 1))"
+    },
+    {
+     "type": "rect",
+     "x": 0.03,
+     "y": 0.1,
+     "width": 0.94,
+     "height": 0.16,
+     "radius": 0.1,
+     "fill": "#FFFFFF1E"
+    },
+    {
+     "type": "line",
+     "x1": 0.5,
+     "y1": 0.08,
+     "x2": 0.5,
+     "y2": 0.44,
+     "stroke": "#ECF0F1B4",
+     "strokeWidth": 0.02
+    },
+    {
+     "type": "line",
+     "when": "!ext.flow.ev",
+     "x1": 0.3825,
+     "y1": 0.34,
+     "x2": 0.3825,
+     "y2": 0.42,
+     "stroke": "#C8C8C896",
+     "strokeWidth": 0.012
+    },
+    {
+     "type": "line",
+     "when": "!ext.flow.ev",
+     "x1": 0.6175,
+     "y1": 0.34,
+     "x2": 0.6175,
+     "y2": 0.42,
+     "stroke": "#C8C8C896",
+     "strokeWidth": 0.012
+    },
+    {
+     "type": "line",
+     "when": "!ext.flow.ev",
+     "x1": 0.265,
+     "y1": 0.3,
+     "x2": 0.265,
+     "y2": 0.42,
+     "stroke": "#ECF0F1C8",
+     "strokeWidth": 0.012
+    },
+    {
+     "type": "line",
+     "when": "!ext.flow.ev",
+     "x1": 0.735,
+     "y1": 0.3,
+     "x2": 0.735,
+     "y2": 0.42,
+     "stroke": "#ECF0F1C8",
+     "strokeWidth": 0.012
+    },
+    {
+     "type": "line",
+     "when": "!ext.flow.ev",
+     "x1": 0.1475,
+     "y1": 0.34,
+     "x2": 0.1475,
+     "y2": 0.42,
+     "stroke": "#C8C8C896",
+     "strokeWidth": 0.012
+    },
+    {
+     "type": "line",
+     "when": "!ext.flow.ev",
+     "x1": 0.8525,
+     "y1": 0.34,
+     "x2": 0.8525,
+     "y2": 0.42,
+     "stroke": "#C8C8C896",
+     "strokeWidth": 0.012
+    },
+    {
+     "type": "line",
+     "when": "ext.flow.ev && ext.flow.threshold > 0",
+     "x1": "0.5 - 0.47 * ext.flow.threshold",
+     "y1": 0.04,
+     "x2": "0.5 - 0.47 * ext.flow.threshold",
+     "y2": 0.48,
+     "stroke": "=abs(ext.flow.value) > ext.flow.threshold - 0.05 ? '#FF3C3CC8' : '#F39C12C8'",
+     "strokeWidth": "abs(ext.flow.value) > ext.flow.threshold - 0.05 ? 0.04 : 0.03"
+    },
+    {
+     "type": "line",
+     "when": "ext.flow.ev && ext.flow.threshold > 0",
+     "x1": "0.5 + 0.47 * ext.flow.threshold",
+     "y1": 0.04,
+     "x2": "0.5 + 0.47 * ext.flow.threshold",
+     "y2": 0.48,
+     "stroke": "=abs(ext.flow.value) > ext.flow.threshold - 0.05 ? '#FF3C3CC8' : '#F39C12C8'",
+     "strokeWidth": "abs(ext.flow.value) > ext.flow.threshold - 0.05 ? 0.04 : 0.03"
+    },
+    {
+     "type": "text",
+     "when": "ext.flow.text != ''",
+     "text": "{ext.flow.text}",
+     "x": 0.5,
+     "y": 0.72,
+     "anchor": "center",
+     "size": 0.24,
+     "maxWidth": 0.95,
+     "weight": "bold",
+     "color": "#ECF0F1DC"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "ext.flow != null && screen == 'comma4' && !ext.flow.ring",
+   "x": 0,
+   "y": 0,
+   "width": 0.037,
+   "height": 1,
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "fill": "#00000064"
+    },
+    {
+     "type": "rect",
+     "x": 0,
+     "y": "0.6 - 0.6 * max(ext.flow.value, 0)",
+     "width": 1,
+     "height": "0.6 * max(ext.flow.value, 0)",
+     "fill": "#6496FF"
+    },
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0.6,
+     "width": 1,
+     "height": "0.4 * max(-ext.flow.value, 0)",
+     "fill": "#64FF64"
+    },
+    {
+     "type": "line",
+     "x1": 0,
+     "y1": 0.6,
+     "x2": 1,
+     "y2": 0.6,
+     "stroke": "#FFFFFF",
+     "strokeWidth": 0.008
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "ext.flow != null && screen == 'comma4' && ext.flow.ring",
+   "aspect": 1,
+   "anchor": "center",
+   "layers": [
+    {
+     "type": "arc",
+     "when": "ext.flow.value < 0",
+     "cx": 0.5,
+     "cy": 0.5,
+     "r": 0.378,
+     "start": 90,
+     "sweep": "180 * min(-ext.flow.value, 1)",
+     "stroke": "#64FF64",
+     "strokeWidth": 0.244
+    },
+    {
+     "type": "arc",
+     "when": "ext.flow.value > 0",
+     "cx": 0.5,
+     "cy": 0.5,
+     "r": 0.378,
+     "start": 90,
+     "sweep": "-180 * min(ext.flow.value, 1)",
+     "stroke": "#6496FF",
+     "strokeWidth": 0.244
+    }
+   ],
+   "x": "hud.wheel.x - 0.4 * hud.wheel.width",
+   "y": "hud.wheel.y - 0.4 * hud.wheel.height - 0.5 * hud.wheel.height * smooth(status == 'disengaged' || blindspot.left || blindspot.right ? 1 : 0, 100)",
+   "width": "1.8 * hud.wheel.width",
+   "height": "1.8 * hud.wheel.height"
+  },
+  {
+   "type": "group",
+   "when": "ext.lateral != null && screen == 'comma3x'",
+   "aspect": 1,
+   "layers": [
+    {
+     "type": "circle",
+     "cx": 0.5,
+     "cy": 0.5,
+     "r": 0.2,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       0,
+       1
+      ],
+      "stops": [
+       [
+        0,
+        "#FAFAFAC8"
+       ],
+       [
+        1,
+        "#C8C8C8C8"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "text",
+     "text": "{ext.lateral}",
+     "x": 0.5,
+     "y": 0.5,
+     "anchor": "center",
+     "size": 0.4,
+     "weight": "bold",
+     "color": "=pick(ext.lateral, 'A', '#3264FFDC', 'C', '#FFA500DC', '#646464DC')",
+     "maxWidth": 0.37
+    }
+   ],
+   "pin": {
+    "hud": "wheel"
+   }
+  },
+  {
+   "type": "group",
+   "when": "ext.lateral != null && screen == 'comma4' && status != 'disengaged'",
+   "aspect": 1,
+   "layers": [
+    {
+     "type": "circle",
+     "cx": 0.5,
+     "cy": 0.5,
+     "r": 0.325,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       0,
+       1
+      ],
+      "stops": [
+       [
+        0,
+        "#FAFAFAC8"
+       ],
+       [
+        1,
+        "#C8C8C8C8"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "text",
+     "text": "{ext.lateral}",
+     "x": 0.5,
+     "y": 0.5,
+     "anchor": "center",
+     "size": 0.65,
+     "weight": "bold",
+     "color": "=pick(ext.lateral, 'A', '#3264FFDC', 'C', '#FFA500DC', '#646464DC')",
+     "maxWidth": 0.6
+    }
+   ],
+   "pin": {
+    "hud": "wheel"
+   }
+  },
+  {
+   "type": "group",
+   "when": "ext.lateral != null && screen != 'comma3x' && screen != 'comma4'",
+   "x": 0.905,
+   "y": 0.07,
+   "width": 0.08,
+   "height": 0.08,
+   "aspect": 1,
+   "layers": [
+    {
+     "type": "circle",
+     "cx": 0.5,
+     "cy": 0.5,
+     "r": 0.2,
+     "fill": {
+      "linear": [
+       0,
+       0,
+       0,
+       1
+      ],
+      "stops": [
+       [
+        0,
+        "#FAFAFAC8"
+       ],
+       [
+        1,
+        "#C8C8C8C8"
+       ]
+      ]
+     }
+    },
+    {
+     "type": "text",
+     "text": "{ext.lateral}",
+     "x": 0.5,
+     "y": 0.5,
+     "anchor": "center",
+     "size": 0.4,
+     "weight": "bold",
+     "color": "=pick(ext.lateral, 'A', '#3264FFDC', 'C', '#FFA500DC', '#646464DC')",
+     "maxWidth": 0.37
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "ext.brakeLights && screen != 'comma3x' && screen != 'comma4'",
+   "x": 0.46,
+   "y": 0.405,
+   "width": 0.08,
+   "height": 0.045,
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "width": 1,
+     "height": 1,
+     "radius": 0.5,
+     "fill": "#FF3C3CDC"
+    },
+    {
+     "type": "text",
+     "text": "BRAKE",
+     "x": 0.5,
+     "y": 0.5,
+     "anchor": "center",
+     "size": 0.6,
+     "weight": "bold",
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "ext.brakeLights && screen == 'comma3x' && !ext.hideSpeed",
+   "pin": {
+    "hud": "speed"
+   },
+   "layers": [
+    {
+     "type": "text",
+     "text": "{ext.clusterSpeed}",
+     "x": 0.5,
+     "y": 0.62,
+     "anchor": "bottom",
+     "size": 0.62,
+     "weight": "bold",
+     "color": "#FF3C3C"
+    },
+    {
+     "type": "text",
+     "text": "{speedUnit}",
+     "x": 0.5,
+     "y": 0.66,
+     "anchor": "top",
+     "size": 0.22,
+     "color": "#FFFFFFC8"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "ext.brakeLights && screen == 'comma4' && status != 'disengaged'",
+   "pin": {
+    "hud": "wheel"
+   },
+   "aspect": 1,
+   "anchor": "center",
+   "layers": [
+    {
+     "type": "circle",
+     "cx": 0.5,
+     "cy": 0.5,
+     "r": 0.46,
+     "stroke": "#FF3C3C",
+     "strokeWidth": 0.08
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "screen != 'comma4' && ext.lead != null && !ext.lead.close",
+   "pin": {
+    "lead": true
+   },
+   "anchor": "top",
+   "y": 0.01,
+   "width": 0.3,
+   "height": 0.1,
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0.0,
+     "y": 0.3,
+     "width": 0.31,
+     "height": 0.7,
+     "radius": 0.2,
+     "fill": "#282828DC",
+     "stroke": "=ext.lead.radar ? '#0064C8' : '#C92231'",
+     "strokeWidth": 0.06
+    },
+    {
+     "type": "text",
+     "text": "{ext.lead.distance|0} {ext.distanceUnit}",
+     "x": 0.155,
+     "y": 0.65,
+     "anchor": "center",
+     "size": 0.36,
+     "maxWidth": 0.28,
+     "color": "#FFFFFF",
+     "outline": "#000000B4"
+    },
+    {
+     "type": "rect",
+     "x": 0.345,
+     "y": 0.3,
+     "width": 0.31,
+     "height": 0.7,
+     "radius": 0.2,
+     "fill": "#282828DC",
+     "stroke": "=ext.lead.radar ? '#0064C8' : '#C92231'",
+     "strokeWidth": 0.06
+    },
+    {
+     "type": "text",
+     "text": "{ext.lead.speed|0} {speedUnit}",
+     "x": 0.5,
+     "y": 0.65,
+     "anchor": "center",
+     "size": 0.36,
+     "maxWidth": 0.28,
+     "color": "#FFFFFF",
+     "outline": "#000000B4"
+    },
+    {
+     "type": "rect",
+     "x": 0.69,
+     "y": 0.3,
+     "width": 0.31,
+     "height": 0.7,
+     "radius": 0.2,
+     "fill": "#282828DC",
+     "stroke": "=ext.lead.radar ? '#0064C8' : '#C92231'",
+     "strokeWidth": 0.06
+    },
+    {
+     "type": "text",
+     "text": "{ext.lead.gapText}",
+     "x": 0.845,
+     "y": 0.65,
+     "anchor": "center",
+     "size": 0.36,
+     "maxWidth": 0.28,
+     "color": "#FFFFFF",
+     "outline": "#000000B4"
+    },
+    {
+     "type": "polygon",
+     "points": [
+      [
+       0.5,
+       0.0
+      ],
+      [
+       0.4,
+       0.3
+      ],
+      [
+       0.6,
+       0.3
+      ]
+     ],
+     "fill": "=ext.lead.radar ? '#0064C8' : '#C92231'",
+     "stroke": "=ext.lead.radar ? '#0086E9' : '#DACA25'",
+     "strokeWidth": 0.03
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "screen != 'comma4' && ext.lead != null && ext.lead.close",
+   "x": 0.35,
+   "y": 0.29,
+   "width": 0.3,
+   "height": 0.1,
+   "layers": [
+    {
+     "type": "rect",
+     "x": 0.0,
+     "y": 0,
+     "width": 0.31,
+     "height": 0.7,
+     "radius": 0.2,
+     "fill": "#282828DC",
+     "stroke": "=ext.lead.radar ? '#0064C8' : '#C92231'",
+     "strokeWidth": 0.06
+    },
+    {
+     "type": "text",
+     "text": "{ext.lead.distance|0} {ext.distanceUnit}",
+     "x": 0.155,
+     "y": 0.35,
+     "anchor": "center",
+     "size": 0.36,
+     "maxWidth": 0.28,
+     "color": "#FFFFFF",
+     "outline": "#000000B4"
+    },
+    {
+     "type": "rect",
+     "x": 0.345,
+     "y": 0,
+     "width": 0.31,
+     "height": 0.7,
+     "radius": 0.2,
+     "fill": "#282828DC",
+     "stroke": "=ext.lead.radar ? '#0064C8' : '#C92231'",
+     "strokeWidth": 0.06
+    },
+    {
+     "type": "text",
+     "text": "{ext.lead.speed|0} {speedUnit}",
+     "x": 0.5,
+     "y": 0.35,
+     "anchor": "center",
+     "size": 0.36,
+     "maxWidth": 0.28,
+     "color": "#FFFFFF",
+     "outline": "#000000B4"
+    },
+    {
+     "type": "rect",
+     "x": 0.69,
+     "y": 0,
+     "width": 0.31,
+     "height": 0.7,
+     "radius": 0.2,
+     "fill": "#282828DC",
+     "stroke": "=ext.lead.radar ? '#0064C8' : '#C92231'",
+     "strokeWidth": 0.06
+    },
+    {
+     "type": "text",
+     "text": "{ext.lead.gapText}",
+     "x": 0.845,
+     "y": 0.35,
+     "anchor": "center",
+     "size": 0.36,
+     "maxWidth": 0.28,
+     "color": "#FFFFFF",
+     "outline": "#000000B4"
+    },
+    {
+     "type": "polygon",
+     "points": [
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.4,
+       0.7
+      ],
+      [
+       0.6,
+       0.7
+      ]
+     ],
+     "fill": "=ext.lead.radar ? '#0064C8' : '#C92231'",
+     "stroke": "=ext.lead.radar ? '#0086E9' : '#DACA25'",
+     "strokeWidth": 0.03
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma4' && ext.complication != null",
+   "opacity": "ext.complication.alpha",
+   "x": 0.79,
+   "y": 0.5,
+   "width": 0.16,
+   "height": 0.34,
+   "layers": [
+    {
+     "type": "text",
+     "text": "{ext.complication.text}",
+     "x": 0.5,
+     "y": 0.5,
+     "anchor": "bottom",
+     "size": 0.42,
+     "weight": "bold",
+     "color": "=ext.complication.color",
+     "outline": "#000000B4"
+    },
+    {
+     "type": "text",
+     "text": "{ext.complication.unit}",
+     "x": 0.5,
+     "y": 0.55,
+     "anchor": "top",
+     "size": 0.16,
+     "weight": "bold",
+     "color": "=ext.complication.color",
+     "outline": "#000000B4"
+    }
+   ]
+  }
+ ]
+}

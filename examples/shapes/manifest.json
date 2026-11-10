@@ -1,0 +1,10 @@
+{
+  "sdk": 1,
+  "id": "shapes",
+  "name": "Shapes, pictures and pins",
+  "version": "0.1.0",
+  "author": "CommaView (example pack)",
+  "description": "Every drawing part of the overlay format on any comma and any fork: a speed gauge (arc), a blinking dot, a speed bar, a picture turning in a group, a badge pinned to the lead car and dots pinned to the driving path. Drawn by the app alone (standalone): nothing is installed on the comma.",
+  "license": "MIT",
+  "overlay": "overlay.json"
+}

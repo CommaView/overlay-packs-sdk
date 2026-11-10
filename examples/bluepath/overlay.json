@@ -1,0 +1,42 @@
+{
+  "format": 1,
+  "id": "bluepath",
+  "layers": [
+    {
+      "type": "pathFill",
+      "when": "ext.enabled && engaged",
+      "gradient": [[0.0, "#41AFFF0A"], [0.45, "#2E9BFF5A"], [1.0, "#1982FF87"]]
+    },
+    {
+      "type": "pathChevrons",
+      "when": "ext.enabled && engaged",
+      "color": "#37AAFF",
+      "acceleration": "car.aEgo"
+    },
+    {
+      "type": "pathLine",
+      "when": "ext.stopMarker != null",
+      "distance": "ext.stopMarker",
+      "halfWidthMeters": 0.85,
+      "thickness": 0.007,
+      "color": "#FFCD5AF5",
+      "glow": "#FFA02355"
+    },
+    {
+      "type": "pathLine",
+      "when": "ext.stopMarker == null && ext.stopBar != null && ext.enabled && engaged",
+      "distance": "ext.stopBar",
+      "halfWidthMeters": 0.7,
+      "thickness": 0.006,
+      "color": "#FFCF6EF0"
+    },
+    {
+      "type": "badge",
+      "when": "ext.stopBadge && ext.enabled && engaged",
+      "text": "Model predicts stop",
+      "x": 0.30, "y": 0.73, "width": 0.40, "height": 0.055,
+      "fill": "#101D2DE1",
+      "textColor": "#FFCF6E"
+    }
+  ]
+}

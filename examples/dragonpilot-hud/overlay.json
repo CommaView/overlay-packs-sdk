@@ -1,0 +1,308 @@
+{
+ "format": 1,
+ "level": 2,
+ "id": "dragonpilot-hud",
+ "hide": [
+  {
+   "part": "speed",
+   "when": "screen == 'comma3x' && ext.hideHudSpeed > 0 && car.vEgo > ext.hideHudSpeed"
+  },
+  {
+   "part": "setSpeed",
+   "when": "screen == 'comma3x' && ext.hideHudSpeed > 0 && car.vEgo > ext.hideHudSpeed"
+  },
+  {
+   "part": "wheel",
+   "when": "screen == 'comma3x' && ext.hideHudSpeed > 0 && car.vEgo > ext.hideHudSpeed"
+  },
+  {
+   "part": "driverMonitor",
+   "when": "screen == 'comma3x' && ext.hideHudSpeed > 0 && car.vEgo > ext.hideHudSpeed"
+  }
+ ],
+ "layers": [
+  {
+   "type": "pathFill",
+   "when": "screen == 'comma3x' && ext.rainbow",
+   "gradient": [
+    [
+     0.2,
+     "=rgba(round(255 * clamp(abs(((3 * 0.8 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.8 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.8 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.2533,
+     "=rgba(round(255 * clamp(abs(((3 * 0.7467 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.7467 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.7467 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.3067,
+     "=rgba(round(255 * clamp(abs(((3 * 0.6933 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.6933 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.6933 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.36,
+     "=rgba(round(255 * clamp(abs(((3 * 0.64 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.64 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.64 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.4133,
+     "=rgba(round(255 * clamp(abs(((3 * 0.5867 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.5867 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.5867 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.4667,
+     "=rgba(round(255 * clamp(abs(((3 * 0.5333 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.5333 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.5333 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.52,
+     "=rgba(round(255 * clamp(abs(((3 * 0.48 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.48 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.48 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.5733,
+     "=rgba(round(255 * clamp(abs(((3 * 0.4267 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.4267 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.4267 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.6267,
+     "=rgba(round(255 * clamp(abs(((3 * 0.3733 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.3733 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.3733 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.68,
+     "=rgba(round(255 * clamp(abs(((3 * 0.32 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.32 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.32 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.7333,
+     "=rgba(round(255 * clamp(abs(((3 * 0.2667 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.2667 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.2667 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.7867,
+     "=rgba(round(255 * clamp(abs(((3 * 0.2133 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.2133 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.2133 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.84,
+     "=rgba(round(255 * clamp(abs(((3 * 0.16 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.16 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.16 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.8933,
+     "=rgba(round(255 * clamp(abs(((3 * 0.1067 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.1067 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.1067 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     0.9467,
+     "=rgba(round(255 * clamp(abs(((3 * 0.0533 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.0533 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.0533 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ],
+    [
+     1.0,
+     "=rgba(round(255 * clamp(abs(((3 * 0.0 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 3) - 1, 0, 1)), round(255 * clamp(2 - abs(((3 * 0.0 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 2), 0, 1)), round(255 * clamp(2 - abs(((3 * 0.0 + (integrate(max(0.01, car.vEgo)) / 20)) % 1) * 6 - 4), 0, 1)), 0.5)"
+    ]
+   ]
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma3x'",
+   "repeat": {
+    "over": "ext.tracks",
+    "max": 22
+   },
+   "pin": {
+    "car": [
+     "item.d",
+     "-item.y"
+    ]
+   },
+   "anchor": "topLeft",
+   "y": -0.0196,
+   "width": 0.1543,
+   "height": 0.1804,
+   "layers": [
+    {
+     "type": "circle",
+     "cx": 0,
+     "cy": 0.1087,
+     "r": 0.0543,
+     "fill": "#FF0000C8"
+    },
+    {
+     "type": "text",
+     "text": "ID: {item.id|int}",
+     "x": 0.0463,
+     "y": 0.0,
+     "anchor": "topLeft",
+     "size": 0.2174,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "text": "d: {item.d * (metric ? 1 : 3.28084)|0.00} {metric ? 'm' : 'ft'}",
+     "x": 0.0463,
+     "y": 0.2174,
+     "anchor": "topLeft",
+     "size": 0.2174,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "text": "y: {item.y * (metric ? 1 : 3.28084)|0.00} {metric ? 'm' : 'ft'}",
+     "x": 0.0463,
+     "y": 0.4348,
+     "anchor": "topLeft",
+     "size": 0.2174,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "text": "dV: {item.v * (metric ? 1 : 2.23694)|0.00} {metric ? 'm/s' : 'mph'}",
+     "x": 0.0463,
+     "y": 0.6522,
+     "anchor": "topLeft",
+     "size": 0.2174,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma3x' && ext.leadStats && longControl",
+   "pin": {
+    "lead": 1
+   },
+   "anchor": "top",
+   "y": 0.0529,
+   "width": 0.5143,
+   "height": 0.1275,
+   "layers": [
+    {
+     "type": "text",
+     "text": "{(lead.vRel + car.vEgo) * (metric ? 3.6 : 2.237)|0} {metric ? 'kph' : 'mph'} | {lead.distance * (metric ? 1 : 3.28084)|0.0} {metric ? 'm' : 'ft'}",
+     "x": 0.5,
+     "y": 0,
+     "anchor": "top",
+     "size": 0.3077,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "when": "car.vEgo > 0 && lead.distance / car.vEgo < 5",
+     "text": "{lead.distance / car.vEgo|0.0}s",
+     "x": 0.5,
+     "y": 0.3077,
+     "anchor": "top",
+     "size": 0.6154,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma3x' && ext.leadStats && longControl",
+   "pin": {
+    "lead": 2
+   },
+   "anchor": "top",
+   "y": 0.0529,
+   "width": 0.5143,
+   "height": 0.1275,
+   "layers": [
+    {
+     "type": "text",
+     "text": "{(lead2.vRel + car.vEgo) * (metric ? 3.6 : 2.237)|0} {metric ? 'kph' : 'mph'} | {lead2.distance * (metric ? 1 : 3.28084)|0.0} {metric ? 'm' : 'ft'}",
+     "x": 0.5,
+     "y": 0,
+     "anchor": "top",
+     "size": 0.3077,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "when": "car.vEgo > 0 && lead2.distance / car.vEgo < 5",
+     "text": "{lead2.distance / car.vEgo|0.0}s",
+     "x": 0.5,
+     "y": 0.3077,
+     "anchor": "top",
+     "size": 0.6154,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma3x'",
+   "pin": {
+    "hud": "border"
+   },
+   "layers": [
+    {
+     "type": "rect",
+     "when": "floor(integrate(ext.blinker.left && blindspot.left ? 4 : 2, !ext.blinker.left) + (integrate(blindspot.left && !ext.blinker.left ? 1 : 0, !(ext.blinker.left || blindspot.left)) > 0 ? 1 : 0)) % 2 == 1 ? (ext.blinker.left || blindspot.left) : (blindspot.left && !ext.blinker.left)",
+     "x": 0,
+     "y": "4 * (hud.borderWidth / hud.border.height)",
+     "width": "(-hud.border.x / hud.border.width)",
+     "height": "1 - 8 * (hud.borderWidth / hud.border.height)",
+     "fill": "=blindspot.left ? '#FFFF00' : '#00FF00'"
+    },
+    {
+     "type": "rect",
+     "when": "floor(integrate(ext.blinker.right && blindspot.right ? 4 : 2, !ext.blinker.right) + (integrate(blindspot.right && !ext.blinker.right ? 1 : 0, !(ext.blinker.right || blindspot.right)) > 0 ? 1 : 0)) % 2 == 1 ? (ext.blinker.right || blindspot.right) : (blindspot.right && !ext.blinker.right)",
+     "x": "1 - (-hud.border.x / hud.border.width)",
+     "y": "4 * (hud.borderWidth / hud.border.height)",
+     "width": "(-hud.border.x / hud.border.width)",
+     "height": "1 - 8 * (hud.borderWidth / hud.border.height)",
+     "fill": "=blindspot.right ? '#FFFF00' : '#00FF00'"
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "when": "screen == 'comma3x' && !(ext.hideHudSpeed > 0 && car.vEgo > ext.hideHudSpeed)",
+   "opacity": "smooth(ext.torqueBar ? 1 : 0, 100)",
+   "height": 2,
+   "layers": [
+    {
+     "type": "group",
+     "height": 2,
+     "layers": [
+      {
+       "type": "arc",
+       "cx": 0.5152,
+       "cy": "(1020 + 4800 - (88 + 16 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1))) / 4080",
+       "r": "(4800 + (56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2) / 4080",
+       "strokeWidth": "(56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 4080",
+       "start": "-96.35 + (((56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2 - 28) / (4800 + (56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2) * 57.2958)",
+       "sweep": "12.7 - 2 * (((56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2 - 28) / (4800 + (56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2) * 57.2958)",
+       "stroke": "=ext.torqueEngaged ? rgba(255, 255, 255, 0.25 + 0.25 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) : '#FFFFFF26'"
+      },
+      {
+       "type": "arc",
+       "cx": 0.5152,
+       "cy": "(1020 + 4800 - (88 + 16 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1))) / 4080",
+       "r": "(4800 + (56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2) / 4080",
+       "strokeWidth": "(56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 4080",
+       "start": "-90 + (smooth(ext.torque, 100) < 0 ? -1 : 1) * (((56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2 - 28) / (4800 + (56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2) * 57.2958)",
+       "sweep": "(smooth(ext.torque, 100) < 0 ? -1 : 1) * max(0, 6.35 * min(abs(smooth(ext.torque, 100)), 1) - 2 * (((56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2 - 28) / (4800 + (56 + 168 * clamp((abs(smooth(ext.torque, 100)) - 0.5) * 2, 0, 1)) / 2) * 57.2958))",
+       "stroke": {
+        "linear": [
+         0.5,
+         0,
+         "0.5 + 0.0359 * (smooth(ext.torque, 100) < 0 ? -1 : 1)",
+         0
+        ],
+        "stops": [
+         [
+          0,
+          "=ext.torqueEngaged ? mixColor('#FFFFFF', '#FF7300', clamp((abs(smooth(ext.torque, 100)) - 0.75) * 4, 0, 1)) : '#FFFFFF59'"
+         ],
+         [
+          1,
+          "=ext.torqueEngaged ? mixColor('#FFFFFF', '#FFC800', clamp((abs(smooth(ext.torque, 100)) - 0.75) * 4, 0, 1)) : '#FFFFFF59'"
+         ]
+        ]
+       }
+      },
+      {
+       "type": "circle",
+       "when": "abs(smooth(ext.torque, 100)) < 0.5",
+       "cx": 0.5152,
+       "cy": 0.2216,
+       "r": 0.0049,
+       "fill": "#B6B6B6E6"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

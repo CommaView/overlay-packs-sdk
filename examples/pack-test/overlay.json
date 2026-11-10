@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "id": "pack-test",
+  "layers": [
+    {
+      "type": "pathFill",
+      "gradient": [[0.0, "#FF3CDC10"], [0.5, "#FF3CDC60"], [1.0, "#FF3CDCA0"]]
+    },
+    {
+      "type": "pathChevrons",
+      "color": "#FFFFFFD0",
+      "acceleration": "ext.aEgo"
+    },
+    {
+      "type": "pathLine",
+      "when": "ext.leadDistance != null",
+      "distance": "ext.leadDistance",
+      "halfWidthMeters": 1.0,
+      "thickness": 0.008,
+      "color": "#FF5050F0",
+      "glow": "#FF505060"
+    },
+    {
+      "type": "pathLine",
+      "when": "ext.leadDistance == null",
+      "distance": "20",
+      "halfWidthMeters": 1.0,
+      "thickness": 0.006,
+      "color": "#50FF78F0"
+    },
+    {
+      "type": "badge",
+      "text": "Pack test running",
+      "x": 0.35, "y": 0.80, "width": 0.30, "height": 0.055,
+      "fill": "#2A0A28E0",
+      "textColor": "#FF8CEB"
+    },
+    {
+      "type": "text",
+      "text": "pack-test · {ext.frames} frames · lead {ext.leadDistance|0} m",
+      "x": 0.02, "y": 0.97, "anchor": "bottomLeft", "size": 0.035,
+      "color": "#FFFFFF", "outline": "#000000C0", "background": "#00000060", "font": "mono"
+    },
+    {
+      "type": "text",
+      "text": "{ext.status|upper} · {ext.vEgo|0.0} m/s · {ext.aEgo|0.00} m/s²",
+      "x": 0.98, "y": 0.97, "anchor": "bottomRight", "size": 0.035,
+      "color": "#FFFFFF", "outline": "#000000C0", "background": "#00000060", "font": "mono"
+    }
+  ]
+}

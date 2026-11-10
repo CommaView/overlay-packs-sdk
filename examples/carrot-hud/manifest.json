@@ -1,0 +1,15 @@
+{
+  "sdk": 1,
+  "id": "carrot-hud",
+  "name": "carrotpilot HUD: follow distance, speed limit, lead",
+  "version": "0.2.0",
+  "author": "CommaView (example pack)",
+  "description": "carrotpilot's own comma 3X onroad additions that CommaView doesn't export: the follow-distance line across the path with its distance beside it, the speed limit and speed camera box (LIMIT / CAM, blinking red and yellow for a camera) from carrotMan, and the radar distance box at the lead car. carrotpilot (ajouatom/openpilot) only.",
+  "license": "MIT",
+  "runtime": {
+    "entry": "export.py",
+    "services": ["longitudinalPlan", "carrotMan"],
+    "requiresModules": ["openpilot.selfdrive.ui.carrot_param_cache"]
+  },
+  "overlay": "overlay.json"
+}

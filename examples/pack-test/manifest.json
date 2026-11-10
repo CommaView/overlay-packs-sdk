@@ -1,0 +1,14 @@
+{
+  "sdk": 1,
+  "id": "pack-test",
+  "name": "Pack test",
+  "version": "0.1.0",
+  "author": "CommaView (example pack)",
+  "description": "Tests the overlay pack pipeline on any comma and any fork: a magenta path, white chevrons, a line at the lead (or 20 m ahead), a \"Pack test running\" badge and live values. Not for driving with.",
+  "license": "MIT",
+  "runtime": {
+    "entry": "export.py",
+    "services": ["carState", "radarState"]
+  },
+  "overlay": "overlay.json"
+}

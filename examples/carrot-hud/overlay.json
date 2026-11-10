@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "id": "carrot-hud",
+  "layers": [
+    {
+      "type": "pathLine",
+      "when": "ext.followDistance != null",
+      "distance": "ext.followDistance",
+      "halfWidthMeters": 1.0,
+      "thickness": 0.003,
+      "color": "#FFFFFF"
+    },
+    {
+      "type": "group",
+      "when": "ext.followDistance != null",
+      "pin": {"path": "ext.followDistance", "offset": 1.0},
+      "anchor": "bottomLeft",
+      "x": 0.0046, "y": 0.015, "width": 0.06, "height": 0.03,
+      "layers": [
+        {
+          "type": "text",
+          "text": "{ext.followDistance|0} m",
+          "x": 0, "y": 0.9, "anchor": "bottomLeft", "size": 0.77,
+          "color": "#FFFFFF", "outline": "#000000C0"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "when": "ext.speedLimit != null && !ext.camera",
+      "text": "LIMIT",
+      "x": 0.0995, "y": 0.907, "anchor": "bottom", "size": 0.028,
+      "color": "#FFFFFF", "outline": "#000000C0", "font": "condensed"
+    },
+    {
+      "type": "text",
+      "when": "ext.speedLimit != null && ext.camera",
+      "text": "CAM",
+      "x": 0.0995, "y": 0.907, "anchor": "bottom", "size": 0.028,
+      "color": "#FFFFFF", "outline": "#000000C0", "font": "condensed"
+    },
+    {
+      "type": "group",
+      "when": "ext.speedLimit != null",
+      "x": 0.0741, "y": 0.9139, "width": 0.0509, "height": 0.0444,
+      "layers": [
+        {
+          "type": "rect",
+          "x": 0, "y": 0, "width": 1, "height": 1, "radius": 0.125,
+          "fill": "=ext.camera ? (clock % 800 < 450 ? '#FF0000D2' : '#FFFF00D2') : ext.overLimit ? '#FF0000D2' : '#FFFFFFD2'",
+          "stroke": "#FFFFFF", "strokeWidth": 0.042
+        },
+        {
+          "type": "text",
+          "text": "{ext.speedLimit|0}",
+          "x": 0.5, "y": 0.5, "anchor": "center", "size": 0.75,
+          "color": "#FFFFFF", "outline": "#000000C0", "font": "condensed"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "when": "lead.distance != null",
+      "pin": {"lead": true},
+      "y": -0.01, "width": 0.06, "height": 0.05,
+      "layers": [
+        {
+          "type": "rect",
+          "x": 0, "y": 0, "width": 1, "height": 1, "radius": 0.15,
+          "fill": "#00000040", "stroke": "#FFAF03", "strokeWidth": 0.06
+        },
+        {
+          "type": "text",
+          "text": "{lead.distance|0.0}",
+          "x": 0.5, "y": 0.5, "anchor": "center", "size": 0.74,
+          "color": "#FFFFFF", "outline": "#000000C0"
+        }
+      ]
+    }
+  ]
+}

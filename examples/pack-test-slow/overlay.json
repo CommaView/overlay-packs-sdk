@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "id": "pack-test-slow",
+  "layers": [
+    {
+      "type": "badge",
+      "text": "Slow pack test still on: {ext.frames} frames",
+      "x": 0.25, "y": 0.66, "width": 0.50, "height": 0.055,
+      "fill": "#3A2A00E0",
+      "textColor": "#FFD25A"
+    }
+  ]
+}

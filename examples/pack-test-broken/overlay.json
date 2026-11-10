@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "id": "pack-test-broken",
+  "layers": [
+    {
+      "type": "badge",
+      "text": "Broken pack test drew: it shouldn't",
+      "x": 0.25, "y": 0.59, "width": 0.50, "height": 0.055,
+      "fill": "#3A0000E0",
+      "textColor": "#FF6E6E"
+    }
+  ]
+}

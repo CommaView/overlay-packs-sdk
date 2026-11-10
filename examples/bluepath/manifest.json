@@ -1,0 +1,15 @@
+{
+  "sdk": 1,
+  "id": "bluepath",
+  "name": "Blue path and predicted stop",
+  "version": "0.1.0",
+  "author": "CommaView (example pack)",
+  "description": "The blue RainbowMode style and the PredictedStopMarker of TonyBinheWu/sunnypilot's hkg-enhanced, as an overlay pack.",
+  "license": "MIT",
+  "runtime": {
+    "entry": "export.py",
+    "services": ["modelV2", "carState"],
+    "requiresModules": ["openpilot.selfdrive.ui.sunnypilot.onroad.blue_path"]
+  },
+  "overlay": "overlay.json"
+}

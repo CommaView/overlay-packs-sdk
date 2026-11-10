@@ -1,0 +1,14 @@
+{
+  "sdk": 1,
+  "id": "pack-test-slow",
+  "name": "Pack test: too slow (safety limit)",
+  "version": "0.1.0",
+  "author": "CommaView (example pack)",
+  "description": "For testing the runtime's safety limits, not for use: it takes 3 ms of every UI frame, over the 2 ms budget, so the comma turns it off about half a second after it starts (\"over 2 ms a frame for 30 frames\").",
+  "license": "MIT",
+  "runtime": {
+    "entry": "export.py",
+    "services": []
+  },
+  "overlay": "overlay.json"
+}
