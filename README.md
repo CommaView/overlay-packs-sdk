@@ -1,5 +1,7 @@
 # CommaView overlay packs SDK
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/commaview)
+
 An overlay pack adds to what [CommaView](https://commaview.com) draws over a comma's onroad view: a fork's blue
 path, a stop marker, a badge, a gauge, a dashcam stamp. This SDK is what you need to write one: the pack format,
 the checker that tests a pack the way the comma and the app read it, CommaView's example and official packs, and
@@ -52,6 +54,15 @@ currently open to CommaView members with pack access; ask in the
 it's listed; official packs are CommaView's own ([docs](docs/extensions.md#sharing-a-pack-the-catalog)).
 
 `tools/build-examples.sh` checks every example and writes its bundle into `dist/extensions/`.
+
+## Community and links
+
+- [CommaView Discord](https://discord.gg/UuMhz9K8ft): questions, pack access, and showing what you've made
+- [commaview.com](https://commaview.com)
+- [X](https://x.com/CommaView)
+- [YouTube](https://www.youtube.com/@CommaView)
+- [Instagram](https://www.instagram.com/commaview/)
+- [Buy me a coffee](https://buymeacoffee.com/commaview)
 
 ## Contributing
 
